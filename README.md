@@ -24,7 +24,7 @@ The installer itself needs you Admin credentials to install the latest `sudo` an
 
 #### Installer
 
-The Installer itself is nothing fancy!
+The Installer itself is nothing fancy! There are no real options, just a bery basic installer (See above why).
 <img src="images/installer1.png?raw=true" />
 
 Only the destination could be changed (if applicable)
