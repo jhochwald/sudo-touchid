@@ -25,12 +25,15 @@ The installer itself needs you Admin credentials to install the latest `sudo` an
 #### Installer
 
 The Installer itself is nothing fancy! There are no real options, just a bery basic installer (See above why).
+
 <img src="images/installer1.png?raw=true" />
 
 Only the destination could be changed (if applicable)
+
 <img src="images/installer2.png?raw=true" />
 
 You need to enter the Admin credentials (You need Admin permission to install the package).
+
 <img src="images/installer3.png?raw=true" />
 
 ## Screenshot
@@ -39,10 +42,13 @@ You need to enter the Admin credentials (You need Admin permission to install th
 
 ### Fallback
 
-If you choose "Use Password" in the dialog above.
+If you choose "Use Password" in the dialog above, the Fallback will come up:
+
 <img src="images/auto_fallback.png?raw=true" />
 
 Handy, if the Touch ID is not working or the Lid is closed.
+
+This will not work an a Mac without Touch-ID.
 
 ## Warning
 
