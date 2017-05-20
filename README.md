@@ -8,14 +8,48 @@ So I merged that patch and did some tests. It works very well on MacOS 10.12. Te
 
 There are no further changes at the moment.
 
+### Binary
+
+You will find a build of `sudo` and `visudo` in the /Dist/bin Directory.
+I (personaly) can't recommend to use a pre-builded version of a tool like `sudo` or `visudo`!
+But that is just my opinion.
+
+### Package
+
+You will find a Packed Version `sudo-touchid.pkg` in the /Dist/pkg Directory.
+The Package contains the latest Binary (See above) and it also applies the correct permission.
+I use this package internal to deploy it via [Munki](https://github.com/munki/munki/wiki).
+
+The installer itself needs you Admin credentials to install the latest `sudo` and `visudo` binaries to `/usr/local/bin` and to change the permission.
+
+#### Installer
+
+The Installer itself is nothing fancy!
+<img src="images/installer1.png?raw=true" />
+
+Only the destination could be changed (if applicable)
+<img src="images/installer2.png?raw=true" />
+
+You need to enter the Admin credentials (You need Admin permission to install the package).
+<img src="images/installer3.png?raw=true" />
+
 ## Screenshot
 
-<img src="images/Screenshot.png?raw=true" width=556 height=284 />		
+<img src="images/Screenshot.png?raw=true" width=556 height=284 />
+
+### Fallback
+
+If you choose "Use Password" in the dialog above.
+<img src="images/auto_fallback.png?raw=true" />
+
+Handy, if the Touch ID is not working or the Lid is closed.
 
 ## Warning
 
-- I am not a security expert. While I am using this as a fun experiment on my personal computer, your security needs may vary.
-- This has only been tested on the 2016 15" MacBook Pro with Touch Bar running macOS 10.12.1.
+- The author not a security expert. While he is using this as a fun experiment on his personal computer, your security needs may vary.
+- This has only been tested on the 2016 15" MacBook Pro with Touch Bar running macOS 10.12.1. (By the Author)
+- There where tests with a 2016 MacBook Pro Touch Bar running macOS 12.12.5 as well.
+- I recommend not to use the pre builded Binary and/or Package. Again, I would not use them because i would like to review the code and build them for myself. But this is just my personal opinion.
 
 ## Building
 
@@ -39,11 +73,16 @@ Now if we try running our copy of `sudo`, it should work:
 
 > ./sudo -s
 
-If you don't have a Mac with a biometric sensor, `sudo-touchid` will fail. If you'd still like to test whether the `LocalAuthentication` framework is working correctly, you can change the `kAuthPolicy` constant to `LAPolicyDeviceOwnerAuthentication` in `sudo/plugins/sudoers/auth/sudo_auth.m`. This will present a dialog box asking the user for his or her password:		
+If you don't have a Mac with a biometric sensor, `sudo-touchid` will ~~fail~~ do nothing!. If you'd still like to test whether the `LocalAuthentication` framework is working correctly, you can change the `kAuthPolicy` constant to `LAPolicyDeviceOwnerAuthentication` in `sudo/plugins/sudoers/auth/sudo_auth.m`. This will present a dialog box asking the user for his or her password:
 
-<img src="images/auto_fallback.png?raw=true" width=556 height=301 />		
+This is where the Fix (Described at the Top) comes into the game:
+<img src="images/auto_fallback.png?raw=true" />
+The Fallback work fine now. Very usefull if the MacBook Pro lid is closed.
 
 While not useful in practice, you can use this to verify that the `LocalAuthentication` code does in fact work.
+
+### Workaround
+Use the Systems build in Sudo: `/usr/bin/sudo`
 
 ## Installing using Homebrew
 
