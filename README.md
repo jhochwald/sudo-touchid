@@ -1,7 +1,7 @@
 # sudo-touchid
 `sudo-touchid` is a fork of `sudo` with Touch ID support on macOS (powered by the `LocalAuthentication` framework). Once compiled, it will allow you to authenticate `sudo` commands with Touch ID in the Terminal on supported Macs (such as the late 2016 MacBook Pros).
 
-## Why an fork?
+## Why this fork?
 
 I like the idea of `sudo-touchid`, but the author doesn't merge the [existing password Fallback patch](https://github.com/mattrajca/sudo-touchid/pull/15) from [serverwentdown](https://github.com/serverwentdown).
 So I merged that patch and did some tests. It works very well on MacOS 10.12. Tested it on 12.12.5 (16F73) and 10.12.6 Beta (16G8c).
